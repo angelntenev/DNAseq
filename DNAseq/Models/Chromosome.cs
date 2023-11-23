@@ -21,7 +21,7 @@ namespace DNAseq.Models
 
         public List<Gene> getGenes()
         {
-            return new List<Gene>(geneList);
+            return geneList;
         }
 
         public void addGene(Gene gene)

@@ -71,5 +71,11 @@ namespace DNAseq.Models
             return trait;
         }
 
+        public void setAlleles(Gene gene)
+        {
+            this.allele1 = gene.getAllele1();
+            this.allele2 = gene.getAllele2();
+        }
+
     }
 }

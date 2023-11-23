@@ -12,21 +12,36 @@ namespace Main
     {
         static void Main(string[] args)
         {
-            Gene parent1 = new Gene('A', 'a');
-            Gene parent2 = new Gene('A', 'a');
+            Organism grass = new Organism("Grass");
 
-            List<Gene> offspring = Crossingover.getPotentialOffspring(parent1, parent2);
-            foreach (Gene allele in offspring)
-            {
-                    Console.WriteLine(allele.getAlleles());
-            }
 
-            Gene tempoffspring;
-            for (int i = 0; i < 100; i++)
+            Chromosome size = new Chromosome("Size");
+            Gene size1 = new Gene('A', 'a', "50/25");
+            Gene size2 = new Gene('A', 'a', "50/25");
+            size.addGene(size1);
+            size.addGene(size2);
+            grass.addChromosome(size);
+
+            Chromosome direction = new Chromosome("Direction");
+            Gene direction1 = new Gene('A', 'a', "right/left");
+            direction.addGene(direction1);
+            grass.addChromosome(direction);
+
+            Chromosome orientation = new Chromosome("Orientation");
+            Gene orientation1 = new Gene('A', 'a', "standing/bending");
+            orientation.addGene(orientation1);
+            grass.addChromosome(orientation);
+
+            Organism grass2 = grass;
+
+            for (int i = 0; i < 10; i++)
             {
-                tempoffspring = Crossingover.Crossover(parent1, parent2);
-                Console.WriteLine(tempoffspring.getAlleles());
+                Organism offspring = grass.Mate(grass2);
+                Console.WriteLine(offspring.getAllChains());
             }
+            
+            
+
 
             Console.ReadKey();
         }

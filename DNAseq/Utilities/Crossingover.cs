@@ -13,14 +13,14 @@ namespace DNAseq.Utilities
         private static Random rnd = new Random();
         public static Gene Crossover(Gene parent1, Gene parent2)
         {
-            List<Gene> offspring = getPotentialOffspring(parent1, parent2);
+            List<Gene> offspringGenes = getPotentialOffspringGenes(parent1, parent2);
 
-            int randomIndex = rnd.Next(offspring.Count);
+            int randomIndex = rnd.Next(offspringGenes.Count);
 
-            return offspring[randomIndex];
+            return offspringGenes[randomIndex];
         }
 
-        public static List<Gene> getPotentialOffspring(Gene parent1, Gene parent2)
+        public static List<Gene> getPotentialOffspringGenes(Gene parent1, Gene parent2)
         {
             List<Gene> offspring = new List<Gene>();
             Gene tempoffspring = new Gene(parent1.getAllele1(), parent2.getAllele1(), parent1.getTrait());

@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Chromosome.cs" />
+    <Compile Include="Models\Organism.cs" />
     <Compile Include="Models\Gene.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

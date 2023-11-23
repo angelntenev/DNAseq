@@ -11,25 +11,25 @@ namespace DNAseq.Utilities
     public static class Crossingover
     {
         private static Random rnd = new Random();
-        public static Allele Crossover(Allele parent1, Allele parent2)
+        public static Gene Crossover(Gene parent1, Gene parent2)
         {
-            List<Allele> offspring = getPotentialOffspring(parent1, parent2);
+            List<Gene> offspring = getPotentialOffspring(parent1, parent2);
 
             int randomIndex = rnd.Next(offspring.Count);
 
             return offspring[randomIndex];
         }
 
-        public static List<Allele> getPotentialOffspring(Allele parent1, Allele parent2)
+        public static List<Gene> getPotentialOffspring(Gene parent1, Gene parent2)
         {
-            List<Allele> offspring = new List<Allele>();
-            Allele tempoffspring = new Allele(parent1.getDominant(), parent2.getDominant());
+            List<Gene> offspring = new List<Gene>();
+            Gene tempoffspring = new Gene(parent1.getAllele1(), parent2.getAllele1(), parent1.getTrait());
             offspring.Add(tempoffspring);
-            tempoffspring = new Allele(parent1.getDominant(), parent2.getRecessive());
+            tempoffspring = new Gene(parent1.getAllele1(), parent2.getAllele2(), parent1.getTrait());
             offspring.Add(tempoffspring);
-            tempoffspring = new Allele(parent1.getRecessive(), parent2.getDominant());
+            tempoffspring = new Gene(parent1.getAllele2(), parent2.getAllele1(), parent1.getTrait());
             offspring.Add(tempoffspring);
-            tempoffspring = new Allele(parent1.getRecessive(), parent2.getRecessive());
+            tempoffspring = new Gene(parent1.getAllele2(), parent2.getAllele2(), parent1.getTrait());
             offspring.Add(tempoffspring);
 
             return offspring;

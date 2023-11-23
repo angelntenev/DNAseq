@@ -5,7 +5,9 @@ VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DNAseq", "DNAseq\DNAseq.csproj", "{132BE974-94B7-4B6F-BD0F-F0359B606B3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "crossoverTest", "crossoverTest\crossoverTest.csproj", "{04257451-22DF-4AF4-A1BB-F8397C3B9EE7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "crossoverTest\Tests.csproj", "{04257451-22DF-4AF4-A1BB-F8397C3B9EE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main", "Test\Main.csproj", "{7F0B13E3-A8EE-4C97-A8A5-A89875954794}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{04257451-22DF-4AF4-A1BB-F8397C3B9EE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04257451-22DF-4AF4-A1BB-F8397C3B9EE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04257451-22DF-4AF4-A1BB-F8397C3B9EE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F0B13E3-A8EE-4C97-A8A5-A89875954794}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F0B13E3-A8EE-4C97-A8A5-A89875954794}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F0B13E3-A8EE-4C97-A8A5-A89875954794}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F0B13E3-A8EE-4C97-A8A5-A89875954794}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

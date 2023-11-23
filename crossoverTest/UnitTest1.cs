@@ -13,8 +13,8 @@ namespace crossoverTest
         {
             try
             {
-                Allele parent1 = new Allele('A', 'a');
-                Allele parent2 = new Allele('A', 'a');
+                Gene parent1 = new Gene('A', 'a');
+                Gene parent2 = new Gene('A', 'a');
                 var distribution = new Dictionary<string, int>
             {
                 { "AA", 0 },
@@ -28,7 +28,7 @@ namespace crossoverTest
                 // Act
                 for (int i = 0; i < numSimulations; i++)
                 {
-                    Allele result = Crossingover.Crossover(parent1, parent2);
+                    Gene result = Crossingover.Crossover(parent1, parent2);
                     string alleleCombo = result.getAlleles();
                     distribution[alleleCombo]++;
                 }

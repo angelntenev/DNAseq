@@ -7,22 +7,21 @@
     <button onclick="getCat()">Generate cat</button>
     <div style="position: relative;">
         <img id="catFurColorImage" src="" style="width: 20%; height: 20%;">
-        <img id="catEyeColorImage" src="" style="position: absolute; top: 34px; left: 12px; width: 6%; height: 6%;">
+        <img id="catEyeColorImage" src="" style="position: absolute; top: 95px; left: 33px; width: 6%; height: 6%;">
     </div>
     <script type="module">
         import { createCat, getCatFurColor, getCatEyeColor } from './scripts/cats.js';
-
         window.getCat = function() {
             createCat();
             var img1 = document.getElementById('catFurColorImage');
             var img2 = document.getElementById('catEyeColorImage');
             img1.src = ""; 
-            img1.src = getCatFurColor(); // Set the new image
-            img2.src = ""; // Clear the old image
-            img2.src = getCatEyeColor(); // Set the new image
+            img1.src = getCatFurColor();
+            img2.src = "";
+            img2.src = getCatEyeColor();
         }
 
-        window.onload = getCat; // Call getCat on page load
+        window.onload = getCat;
     </script>
 </body>
 </html>

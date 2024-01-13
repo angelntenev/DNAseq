@@ -1,8 +1,6 @@
 import Organism from './Organism.js';
 import Chromosome from './Chromosome.js';
 import Gene from './Gene.js';
-// Import Crossingover if needed
-// import Crossingover from './Crossingover.js';
 
 let pairs = [];
 export function createCat() 
@@ -34,6 +32,40 @@ export function createCat()
 }
 
 
+export function getCatImage() {
+    return new Promise((resolve, reject) => 
+    {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+
+        const furColorImage = new Image();
+        furColorImage.src = getCatFurColor();
+        furColorImage.onload = function() 
+        {
+            canvas.width = furColorImage.width;
+            canvas.height = furColorImage.height;
+
+            ctx.drawImage(furColorImage, 0, 0);
+
+            const eyeColorImage = new Image();
+            eyeColorImage.src = getCatEyeColor();
+            eyeColorImage.onload = function() 
+            {
+                const eyeX = 80;
+                const eyeY = 265;
+
+                ctx.drawImage(eyeColorImage, eyeX, eyeY);
+
+                const resultingImage = canvas.toDataURL();
+                console.log(resultingImage);
+                resolve(resultingImage);
+            };
+            eyeColorImage.onerror = reject;
+        };
+        furColorImage.onerror = reject;
+    });
+}
+
 export function getCatFurColor() 
 {
     if (pairs[0][0] === pairs[0][0].toUpperCase()) {
@@ -55,3 +87,4 @@ export function getCatEyeColor()
         return "res/images/cateyes-blue.png";
     }
 }
+

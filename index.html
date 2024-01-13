@@ -11,19 +11,22 @@
 <body>
     <button onclick="getCat()">Generate cat</button>
     <div style="position: relative;">
-        <img id="catFurColorImage" src="" style="width: 20%; height: 20%;">
-        <img id="catEyeColorImage" src="" style="position: absolute; top: 95px; left: 33px; width: 6%; height: 6%;">
     </div>
     <script type="module">
-        import { createCat, getCatFurColor, getCatEyeColor } from './scripts/cats.js';
-        window.getCat = function() {
+        import { createCat, getCatFurColor, getCatEyeColor, getCatImage } from './scripts/cats.js';
+
+
+        window.getCat = async function() {
             createCat();
-            var img1 = document.getElementById('catFurColorImage');
-            var img2 = document.getElementById('catEyeColorImage');
-            img1.src = ""; 
-            img1.src = getCatFurColor();
-            img2.src = "";
-            img2.src = getCatEyeColor();
+            var combinedImage = document.getElementById('combinedImage');
+            if (!combinedImage) 
+            {
+                combinedImage = new Image();
+                combinedImage.id = 'combinedImage';
+                document.body.appendChild(combinedImage);
+            }
+            combinedImage.src = await getCatImage();
+            combinedImage.style.width = '20%';
         }
 
         window.onload = getCat;

@@ -1,0 +1,12 @@
+{
+  "name": "projectox",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "App that mates 2 organisms",
+  "main": "cats.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Angel Tenev",
+  "license": "ISC"
+}

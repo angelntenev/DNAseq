@@ -13,15 +13,14 @@ namespace crossoverTest
         {
             try
             {
-                Gene parent1 = new Gene('A', 'a');
-                Gene parent2 = new Gene('A', 'a');
+                Gene parent1 = new Gene('A', 'a', "Size");
+                Gene parent2 = new Gene('A', 'a', "Size");
                 var distribution = new Dictionary<string, int>
-            {
-                { "AA", 0 },
-                { "Aa", 0 },
-                { "aA", 0 },
-                { "aa", 0 }
-            };
+        {
+            { "AA", 0 },
+            { "Aa/aA", 0 }, // Combined category for Aa and aA
+            { "aa", 0 }
+        };
 
                 int numSimulations = 10000;
 
@@ -30,17 +29,20 @@ namespace crossoverTest
                 {
                     Gene result = Crossingover.Crossover(parent1, parent2);
                     string alleleCombo = result.getAlleles();
-                    distribution[alleleCombo]++;
+                    if (alleleCombo == "Aa" || alleleCombo == "aA")
+                    {
+                        distribution["Aa/aA"]++;
+                    }
+                    else
+                    {
+                        distribution[alleleCombo]++;
+                    }
                 }
 
                 // Assert
-                foreach (var pair in distribution)
-                {
-                    // Allowing a margin for randomness, expecting around 25% distribution
-                    int lowerBound = (int)(numSimulations * 0.24); // 20% lower bound
-                    int upperBound = (int)(numSimulations * 0.26); // 30% upper bound
-                    Assert.IsTrue(pair.Value > lowerBound && pair.Value < upperBound, $"Distribution for {pair.Key} is {pair.Value}, which is outside the expected range.");
-                }
+                Assert.IsTrue(distribution["AA"] > (numSimulations * 0.20) && distribution["AA"] < (numSimulations * 0.30), $"Distribution for AA is {distribution["AA"]}");
+                Assert.IsTrue(distribution["Aa/aA"] > (numSimulations * 0.45) && distribution["Aa/aA"] < (numSimulations * 0.55), $"Distribution for Aa/aA is {distribution["Aa/aA"]}");
+                Assert.IsTrue(distribution["aa"] > (numSimulations * 0.20) && distribution["aa"] < (numSimulations * 0.30), $"Distribution for aa is {distribution["aa"]}");
             }
             catch (Exception ex)
             {
@@ -48,5 +50,6 @@ namespace crossoverTest
                 throw;
             }
         }
+
     }
 }

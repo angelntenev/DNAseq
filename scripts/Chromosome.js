@@ -17,4 +17,6 @@ export default class Chromosome {
     getChainName() {
         return this.chainName;
     }
+    
+    
 }

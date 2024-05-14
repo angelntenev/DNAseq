@@ -21,7 +21,7 @@ namespace Main
             size.addGene(size1);
             size.addGene(size2);
             grass.addChromosome(size);
-            foreach (var genes in size.getGenes()) 
+            foreach (var genes in size.getGenes())
             {
                 //  Console.WriteLine(genes.getResultingTrait());
             }
@@ -45,27 +45,26 @@ namespace Main
                 Organism offspring = grass.Mate(grass2);
                 offsprings.Add(offspring);
             }
-            
-            
+
+            Console.WriteLine(grass.getAllChains());
             foreach (var offspring in offsprings)
             {
-                //Console.WriteLine(offspring.getAllChains());
-                for (int i = 0; i < offspring.getAllChromosomes().Count; i++)
+                Console.Write("Next Offspring -> "); Console.WriteLine(offspring.getAllChains());
+                foreach (var chromosome in offspring.getAllChromosomes())
                 {
-                    foreach (var chromosome in offspring.getAllChromosomes())
-                    {                     
-                        for (int j = 0; j < chromosome.getGenes().Count; j++)
-                        {
-                            foreach (var gene in chromosome.getGenes())
-                            {
-                                Console.WriteLine(gene.getResultingTrait());
-                            }
-                        }
+                    Console.WriteLine("Next Chromosome: ");
+                    foreach (var gene in chromosome.getGenes())
+                    {
+                        Console.Write("Allele1: ");
+                        Console.WriteLine(gene.getAllele1());
+                        Console.Write("Allele2: ");
+                        Console.WriteLine(gene.getAllele2());
+                        Console.WriteLine(gene.getResultingTrait());
+                        Console.WriteLine("__________");
                     }
-                    Console.WriteLine();
-
                 }
             }
+
 
             Console.ReadKey();
         }

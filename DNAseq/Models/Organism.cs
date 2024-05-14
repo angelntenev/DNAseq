@@ -53,7 +53,7 @@ namespace DNAseq.Models
                 {
                     finalChain += gene.getAlleles();
                 }
-                finalChain += '\n';
+                //finalChain += '\n';
             }
 
             return finalChain;
@@ -75,20 +75,23 @@ namespace DNAseq.Models
         {
             return chromosomes[identifier];
         }
+        
 
         public Organism Mate(Organism mate)
         {
             Organism offspring = new Organism(this.name);
-
             for (int i = 0; i < chromosomes.Count; i++)
             {
                 List<Gene> genes = chromosomes[i].getGenes();
-                List<Gene> targetGenes = mate.GetChromosomeByIdentifier(i).getGenes();
+                List<Gene> mateGenes = mate.GetChromosomeByIdentifier(i).getGenes();
+
                 Chromosome chromosome = new Chromosome(chromosomes[i].getChainName());
                 offspring.addChromosome(chromosome);
+
+
                 for (int j = 0; j < genes.Count; j++)
                 {
-                    Gene newGene = Crossingover.Crossover(genes[j], targetGenes[j]);
+                    Gene newGene = Crossingover.Crossover(genes[j], mateGenes[j]);
                     offspring.GetChromosomeByIdentifier(i).getGenes().Add(newGene);
                 }
             }

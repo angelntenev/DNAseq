@@ -12,8 +12,9 @@ namespace DNAseq.Models
         char allele2;
         //Trait is the defining Trait about the gene, such as COLOR, EYE COLOR, LENGTH(AS IN TALLNESS)
         string trait;
-        //Resulting trait is TRUE if there is dominant allele and FALSE if 2 recessive traits
+        //Resulting trait is TRUE if there is a dominant allele and FALSE if 2 recessive traits
         bool resultingTrait;
+        string resultTrait;
 
         public Gene(char A, char a, string trait)
         {
@@ -37,6 +38,12 @@ namespace DNAseq.Models
             }
 
             this.trait = trait;
+            string[] words = trait.Split('/');
+            if (resultingTrait)
+            {
+                resultTrait = words[0];
+            }
+            else resultTrait = words[1];
         }
 
         public Gene(string alleles, string trait)
@@ -61,9 +68,9 @@ namespace DNAseq.Models
             return allele2;
         }
 
-        public bool getResultingTrait()
+        public string getResultingTrait()
         {
-            return resultingTrait;
+            return resultTrait;
         }
 
         public string getTrait()

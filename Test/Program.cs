@@ -46,25 +46,10 @@ namespace Main
                 offsprings.Add(offspring);
             }
 
-            Console.WriteLine(grass.getAllChains());
             foreach (var offspring in offsprings)
             {
-                Console.Write("Next Offspring -> "); Console.WriteLine(offspring.getAllChains());
-                foreach (var chromosome in offspring.getAllChromosomes())
-                {
-                    Console.WriteLine("Next Chromosome: ");
-                    foreach (var gene in chromosome.getGenes())
-                    {
-                        Console.Write("Allele1: ");
-                        Console.WriteLine(gene.getAllele1());
-                        Console.Write("Allele2: ");
-                        Console.WriteLine(gene.getAllele2());
-                        Console.WriteLine(gene.getResultingTrait());
-                        Console.WriteLine("__________");
-                    }
-                }
+                offspring.GetInfo();
             }
-
 
             Console.ReadKey();
         }

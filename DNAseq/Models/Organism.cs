@@ -37,7 +37,7 @@ namespace DNAseq.Models
             }
             return null;
         }
-        
+
         public void addChromosome(Chromosome chromosome)
         {
             chromosomes.Add(chromosome);
@@ -75,7 +75,7 @@ namespace DNAseq.Models
         {
             return chromosomes[identifier];
         }
-        
+
 
         public Organism Mate(Organism mate)
         {
@@ -96,6 +96,25 @@ namespace DNAseq.Models
                 }
             }
             return offspring;
+        }
+
+        public void GetInfo()
+        {
+            Console.WriteLine("|============================================|");
+            Console.Write("New Offspring ->: "); Console.WriteLine(this.getAllChains());
+            Console.WriteLine();
+            Console.WriteLine("Info:");
+            foreach (var chromosome in this.getAllChromosomes())
+            {
+                Console.WriteLine();
+                Console.WriteLine($"{chromosome.getChainName()} chromosome ");
+                for (int i = 0; i < chromosome.getGenes().Count; i++)
+                {
+                    Console.WriteLine($"{chromosome.getGenes()[i].getAlleles()}" +
+                        $" -> resulting train: {chromosome.getGenes()[i].getResultingTrait()}");
+                }
+                Console.WriteLine();
+            }
         }
     }
 }
